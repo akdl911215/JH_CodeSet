@@ -1,0 +1,11 @@
+INDEX VERSION 1.4+C:\Joung\sts-bundle\workspace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2009997400.index
+3352862376.index
+1183003194.index
+125662449.index
+1121823424.index
+1790694195.index
+940583682.index
+1256346881.index
+1790694195.index
+483985240.index

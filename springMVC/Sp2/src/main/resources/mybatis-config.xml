@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+   <settings> 
+   		<setting name="jdbcTypeForNull" value="NULL" /> 
+   </settings>
+   <typeAliases> 
+   	  <typeAlias alias="Address" type="jung.md.domain.Address"/>
+   	  <typeAlias alias="Board" type="jung.uss.domain.Board"/>
+   	  <typeAlias alias="AddressFile" type="jung.md.domain.AddressFile"/>
+   	  
+   </typeAliases>
+   <mappers>
+   	  <mapper resource="jung/md/mapper/AddressMapper.xml"/>
+   	  <mapper resource="jung/uss/mapper/BoardMapper.xml"/>
+   </mappers>
+   
+
+</configuration>
+
+
+

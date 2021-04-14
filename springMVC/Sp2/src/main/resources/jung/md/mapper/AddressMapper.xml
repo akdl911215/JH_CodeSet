@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jung.md.mapper.AddressMapper">
+	<select id="list" resultType="Address">
+	    select * from ADDRESS order by SEQ desc
+	</select>
+	<!-- 
+	<insert id="insert" parameterType="Address">
+		insert into ADDRESS values(ADDRESS_SEQ.nextval, #{name}, #{addr}, SYSDATE)
+	</insert>
+	 -->
+	<delete id="delete" parameterType="long">
+	    delete from ADDRESS where SEQ=#{seq}
+	</delete>
+	
+	<select id="fileListForRemove" resultType="AddressFile" parameterType="long">
+	    select * from ADDRESS_FILE where SEQ=#{seq}
+	</select>
+	
+	<!-- 오라클 -->
+	<insert id="insertSelectKey" parameterType="Address">
+		<!-- ADDRESS_SEQ값을 증가시키고 해당 값을 롱타입으로 keyProperty="seq"에 저장  -->
+		<selectKey keyProperty="seq" order="BEFORE" resultType="long">
+			select ADDRESS_SEQ.nextval from dual
+		</selectKey>
+		insert into ADDRESS values(#{seq}, #{name}, #{addr}, SYSDATE)
+	</insert>
+	
+	<!-- mysql
+	
+	<insert id="insertSelectKey" parameterType="Address">
+	 	<selectKey keyProperty="seq" order="BEFORE" resultType="Long">
+	 		select max(seq)+1 from address 
+	 	</selectKey>
+		insert into ADDRESS(seq, name, addr, rdate) values(#{seq}, #{name}, #{addr}, now())
+	</insert>
+	
+	 -->
+	
+	
+	<insert id="insertF" parameterType="AddressFile"> <!-- parameterType = jung.uss.domain.AddressFile 인데 마바티스에서 알리아스 선언해서 가능한것 -->
+		insert into ADDRESS_FILE values(ADDRESS_FILE_SEQ.nextval, #{ofname}, #{sfname}, #{fsize}, #{seq})
+	</insert>
+</mapper>
